@@ -15,6 +15,9 @@ delurl = ''
 errorlogurl = ''
 master_key = ''
 website_icon = ''
+website_name = ''
+embed_description = ''
+
 
 def dbmaker():
     if not exists('keys.db'):
