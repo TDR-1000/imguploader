@@ -1,4 +1,5 @@
 from flask import Flask, render_template, Blueprint, request, jsonify
+from endpoints.methods import website_icon
 import gevent.pywsgi
 
 import sys
@@ -23,7 +24,7 @@ app.add_url_rule('/<imgfile>', 'sender', endpoints.static.imagerender.sender)
 
 @app.route('/image', methods=['GET'])
 def home():
-    return render_template('invalid.html'), 400
+    return render_template('invalid.html', website_icon), 400
 
 
 

@@ -1,4 +1,4 @@
-from endpoints.methods import  dbmaker, getstats
+from endpoints.methods import  dbmaker, getstats, website_icon
 from flask import render_template
 from os.path import exists
 import datetime
@@ -54,6 +54,6 @@ def sender(imgfile):
 
     rgbcolor = ImageColor.getcolor(f'#{color}', 'RGB')
     if imgfile.endswith('.mp4'):
-        return render_template('movie.html', imagename=imgfile, infotext=imgtext, color=color, uploadtext=customtext, rgbcolor1=rgbcolor[0], rgbcolor2=rgbcolor[1], rgbcolor3=rgbcolor[2])
+        return render_template('movie.html', imagename=imgfile, infotext=imgtext, color=color, uploadtext=customtext, rgbcolor1=rgbcolor[0], rgbcolor2=rgbcolor[1], rgbcolor3=rgbcolor[2], website_icon=website_icon)
 
-    return render_template('img.html', imagename=imgfile, infotext=imgtext, color=color, uploadtext=customtext, rgbcolor1=rgbcolor[0], rgbcolor2=rgbcolor[1], rgbcolor3=rgbcolor[2])
+    return render_template('img.html', imagename=imgfile, infotext=imgtext, color=color, uploadtext=customtext, rgbcolor1=rgbcolor[0], rgbcolor2=rgbcolor[1], rgbcolor3=rgbcolor[2], website_icon=website_icon)

@@ -14,6 +14,7 @@ sys.dont_write_bytecode = True
 delurl = ''
 errorlogurl = ''
 master_key = ''
+website_icon = ''
 
 def dbmaker():
     if not exists('keys.db'):
