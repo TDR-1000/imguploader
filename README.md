@@ -5,6 +5,8 @@
   <li>Replace <a href=https://github.com/Ghostboy00/imguploader/blob/master/host.py#L8>this</a> with your domain.</li>
   <li>Generate a secure master key and insert it into <a href="https://github.com/Ghostboy00/imguploader/blob/master/endpoints/methods.py#L16">methods.py</a> </li>
   <li>Enter your webhooks in <a href="https://github.com/Ghostboy00/imguploader/blob/master/endpoints/methods.py#L14#L15">methods.py</a></li>
+  <li>Fill in your website icon, name and embed description in
+  <a href="https://github.com/Ghostboy00/imguploader/blob/master/endpoints/methods.py#L17#L19">methods.py</a></li>
   <br>
   <br>
   <li>Copy the ShareX config from below and enter your domain.</li>
