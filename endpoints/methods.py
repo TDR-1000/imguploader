@@ -11,12 +11,14 @@ import sys
 sys.dont_write_bytecode = True
 
 #configs
+domain = ''
 delurl = ''
 errorlogurl = ''
 master_key = ''
 website_icon = ''
 website_name = ''
 embed_description = ''
+cleaner_time = datetime.timedelta(days=21)
 
 
 def dbmaker():
@@ -151,7 +153,7 @@ def filecleaner():
         imgstats = os.stat(f'templates/images/{imgmame}')
         filesize = getstats(imgstats.st_size)
         filetime = datetime.datetime.fromtimestamp(imgstats.st_ctime, datetime.timezone(datetime.timedelta(hours=1))) 
-        weeksb = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=1))) - datetime.timedelta(days=21)
+        weeksb = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=1))) - cleaner_time
 
         imgtexttime = filetime.strftime('%d-%m-%Y | %H:%M')
         imgtext = f'{imgtexttime} | {filesize[1]} ({filesize[0]})'
@@ -227,7 +229,7 @@ def log(connectip, api_key, webhookurl, imgtext, dcid, filename):
 
         ],
         "image": {
-        "url": f"https://img.ghostboy.dev/images/{filename}"
+            "url": f"https://{domain}/images/{filename}"
         }
     }
     

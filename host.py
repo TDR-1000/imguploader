@@ -1,12 +1,12 @@
 from flask import Flask, render_template, jsonify, Blueprint, request 
-from endpoints.methods import website_icon, website_name
-import gevent.pywsgi
+from endpoints.methods import website_icon, website_name, domain
+from gevent import pywsgi
 
 import sys
 sys.dont_write_bytecode = True
 
 app = Flask(__name__, template_folder='templates', static_folder='templates/images')
-app.config['ghostboy.dev'] = 'ghostboy.dev:5000'
+app.config[domain] = f'{domain}:5000'
 bp = Blueprint('image', __name__, subdomain="<user>")
 
 
@@ -69,5 +69,5 @@ def handle_exception(e):
 
 app.register_blueprint(bp)
 
-app_server = gevent.pywsgi.WSGIServer(('localhost', 755), app)
+app_server = pywsgi.WSGIServer(('localhost', 755), app)
 app_server.serve_forever()
