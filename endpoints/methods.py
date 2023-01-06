@@ -2,7 +2,7 @@ from os.path import exists
 import time
 import sqlite3
 import os
-import shutil
+import os
 from threading import Thread
 import requests
 import datetime
@@ -166,7 +166,7 @@ def filecleaner():
                 con.commit()
                 con.close()
                 
-                shutil.rmtree(f'templates/images/{imgmame}')
+                os.remove(f'templates/images/{imgmame}')
                 Thread(target=dellog, args=(delurl, imgmame, imgtext)).start()
         except:
             pass
