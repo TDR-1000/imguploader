@@ -198,45 +198,6 @@ def dellog(webhookurl, filename, filestats):
     }
     requests.post(url=webhookurl, json=data)
 
-def reqlog(connectip, filename, imgtext, webhookurl):
-    time_to_convert = str(imgtext)[0:18]
-    set_time_stamp = Helper.unix_converter(time_to_convert=str(time_to_convert))
-    rest_time_stamp = str(imgtext)[21:]
-    splittet_time_part = f'{set_time_stamp} | {rest_time_stamp}'
-    
-    embeds = {
-        "title": "Image system",
-        "color": 16724016,
-        "footer": {
-            "text": "Image uplaoder",
-            "icon_url": "https://ghostboy.dev/assets/darkman.gif"
-        },
-        "fields": [
-            {
-                "name": "Image request found",
-                "value": f'Requested ip: ||{connectip}||'
-            },
-            {
-                "name": "Image stats",
-                "value": f'File: {filename}\nStats: {splittet_time_part}'
-            }
-
-        ],
-    }
-    
-
-    data = {
-        "username": "Api log",
-        "avatar_url": "https://ghostboy.dev/assets/darkman.gif",
-        "embeds": [
-            embeds
-        ],
-    }
-    requests.post(url=webhookurl, json=data)
-
-
-
-
 
 def log(connectip, api_key, webhookurl, imgtext, dcid, filename):
     if str(webhookurl) == 'No':
