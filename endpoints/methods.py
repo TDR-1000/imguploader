@@ -6,6 +6,9 @@ import os
 from threading import Thread
 import requests
 import datetime
+import random
+import string
+
 
 import sys
 sys.dont_write_bytecode = True
@@ -172,7 +175,10 @@ def filecleaner():
                 Thread(target=dellog, args=(delurl, imgmame, imgtext)).start()
         except:
             pass
-
+        
+def passwordmaker(size):
+    getpasswd =  ''.join(random.choice(string.ascii_uppercase + string.digits + string.ascii_lowercase) for x in range(size))
+    return getpasswd
 
 def dellog(webhookurl, filename, filestats):
     embeds = {

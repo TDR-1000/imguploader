@@ -1,7 +1,5 @@
-from endpoints.methods import dbmaker, Verfiy
+from endpoints.methods import dbmaker, passwordmaker, Verfiy
 from flask import request
-import requests
-
 import sys
 sys.dont_write_bytecode = True
 
@@ -34,21 +32,7 @@ def createkey():
         }   
         return invalidarg, 200
 
-    retries = 0
-    try:
-        makeapikey = requests.get('https://api.ghostboy.dev/passwd?psize=25').json()['Password']
-    except:
-        while retries < 10:
-            try:
-                makeapikey = requests.get('https://api.ghostboy.dev/passwd?psize=25').json()['Password']
-            except:
-                retries += 1
-
-        if requests.get('https://api.ghostboy.dev/passwd?psize=1').status_code != 200:
-            connectionres = {
-                "Error": "Something wrent wrong with the connection to the api"
-            }
-            return connectionres, 500
+    makeapikey = passwordmaker(size=25)
 
 
     cur.execute("INSERT INTO keys(key, dcid, customtext, color, webhook) VALUES (?,?,?,?,?)",
