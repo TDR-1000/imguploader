@@ -14,12 +14,16 @@ bp = Blueprint('image', __name__, subdomain="<user>")
 def imgpage():
     return render_template('index.html'), 200
 
+from endpoints.static import *
 
 import endpoints.static.upload
 app.add_url_rule('/upload', 'upload', endpoints.static.upload.uploader, methods=['POST', 'GET'])
 
 import endpoints.static.imagerender
 app.add_url_rule('/<imgfile>', 'sender', endpoints.static.imagerender.sender)
+
+import endpoints.static.fetchimg
+app.add_url_rule('/fetchimg', 'get_images', endpoints.static.fetchimg.get_images)
 
 
 @app.route('/image', methods=['GET'])
