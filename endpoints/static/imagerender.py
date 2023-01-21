@@ -30,7 +30,7 @@ def sender(imgfile):
     cur = getsql[0]
     con = getsql[1]
     
-    getkey = cur.execute(f"SELECT key FROM keyupload WHERE imgname=('{currentfile}')").fetchall()
+    getkey = cur.execute(f"SELECT key FROM keyupload WHERE imgname=('{imgfile}')").fetchall()
     if str(getkey) == '[]':
         imgtext = 'Uploaded to ghostboy.dev'
         color = '#2F4F4F'
