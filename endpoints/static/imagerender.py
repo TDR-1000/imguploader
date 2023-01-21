@@ -29,8 +29,6 @@ def sender(imgfile):
     getsql = dbmaker()
     cur = getsql[0]
     con = getsql[1]
-
-    currentfile = str(imgfile).split('.')[0]
     
     getkey = cur.execute(f"SELECT key FROM keyupload WHERE imgname=('{currentfile}')").fetchall()
     if str(getkey) == '[]':
