@@ -1,4 +1,4 @@
-from endpoints.methods import dbmaker, log, filecleaner, getstats, Verfiy
+from endpoints.methods import dbmaker, log, filecleaner, getstats, domain, Verfiy
 from flask import request
 from threading import Thread
 import datetime
@@ -89,7 +89,7 @@ def uploader():
         Thread(target=log, args=(connectip, api_key, webhookurl, imgtext, dcid, filename,)).start()
         Thread(target=filecleaner,).start()
         
-        status = f"https://img.ghostboy.dev/{path}"
+        status = f"https://{domain}/{path}"
 
         return status, 200
 

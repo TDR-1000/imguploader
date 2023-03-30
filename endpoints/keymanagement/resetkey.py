@@ -1,4 +1,4 @@
-from endpoints.methods import dbmaker, Verfiy
+from endpoints.methods import dbmaker, Verfiy, passwordmaker
 from flask import request
 import requests
 
@@ -20,16 +20,7 @@ def reset():
     if verdc[0]:
         return verdc[1]
 
-    try:
-        makeapikey = requests.get('https://api.ghostboy.dev/passwd?psize=25').json()['Password']
-    except:
-        notdone = True
-        while notdone:
-            try:
-                makeapikey = requests.get('https://api.ghostboy.dev/passwd?psize=25').json()['Password']
-                notdone = False
-            except:
-                pass
+    makeapikey = passwordmaker(size=25)
     cur.execute(f"UPDATE keys SET key=('{str(makeapikey)}') WHERE dcid='{str(dcid)}'")
     con.commit()
 
